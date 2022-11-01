@@ -71,6 +71,9 @@ yum groupinstall -y "X Window System"
 #yum groupinstall -y "GNOME Desktop"
 yum install -y gnome-classic-session gnome-terminal nautilus-open-terminal control-center liberation-mono-fonts
 
+#remove dev-log
+rm -rf /run/systemd/journal/dev-log
+
 #remove packages directory
 rm -rf /packages/*.rpm
 
@@ -79,6 +82,9 @@ EOF
 sudo umount $TARGET_ROOTFS_DIR/proc
 sudo umount $TARGET_ROOTFS_DIR/sys
 sudo umount $TARGET_ROOTFS_DIR/dev
+
+#make adv
+./mk-adv.sh
 
 #make image
 ./mk-image.sh
