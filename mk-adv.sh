@@ -22,6 +22,7 @@ cat << EOF | chroot $TARGET_ROOTFS_DIR
 #for login
 useradd -m -s /bin/bash centos
 echo "centos:123456" | chpasswd
+echo "root:123456" | chpasswd
 echo ~
 
 ## Export env vars
