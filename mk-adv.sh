@@ -22,15 +22,16 @@ cat << EOF | chroot $TARGET_ROOTFS_DIR
 #for login
 useradd -m -s /bin/bash centos
 echo "centos:123456" | chpasswd
-echo "root:123456" | chpasswd
-echo ~
+
+# set zh_CN.UTF-8 for default locale
+echo "LANG=zh_CN.UTF-8" >> /etc/locale.conf
 
 ## Export env vars
-echo "export LC_ALL=zh_CN.UTF-8" >> /home/centos/.bashrc
-echo "export LANG=zh_CN.UTF-8" >> /home/centos/.bashrc
-echo "export LANGUAGE=zh_CN.UTF-8" >> /home/centos/.bashrc
+echo "export LC_ALL=zh_CN.UTF-8" >> ~/.bashrc
+echo "export LANG=zh_CN.UTF-8" >> ~/.bashrc
+echo "export LANGUAGE=zh_CN.UTF-8" >> ~/.bashrc
 
-source /home/centos/.bashrc
+source ~/.bashrc
 
 #timezone
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
