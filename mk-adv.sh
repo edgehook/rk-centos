@@ -1,5 +1,6 @@
 #!/bin/bash -e
 TARGET_ROOTFS_DIR="binary"
+RELEASE_VERSION="1.0.0.1"
 
 echo "in mk-adv.sh"
 
@@ -50,6 +51,12 @@ ln -s /dev/disk/by-partlabel/misc /misc
 
 #fixup serial login error
 ln -s /dev/null /etc/systemd/system/plymouth-start.service
+
+echo "Adding advantech-info to /etc/os-release..."
+echo "ADVANTECH_INFO=\"Beta release version:${RELEASE_VERSION}\"" >> /etc/os-release
+
+echo "Adding build-info to /etc/os-release..."
+echo "BUILD_INFO=\"$(whoami)@$(hostname) $(date)${@:+ - $@}\"" >> /etc/os-release
 
 EOF
 
