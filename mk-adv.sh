@@ -16,6 +16,9 @@ sudo mount -t proc /proc $TARGET_ROOTFS_DIR/proc
 sudo mount -t sysfs /sys $TARGET_ROOTFS_DIR/sys
 sudo mount -o bind /dev $TARGET_ROOTFS_DIR/dev
 
+echo "1.copy overlay"
+cp -rfp overlay-adv/* $TARGET_ROOTFS_DIR/
+
 echo "\033[36m Change root.....................\033[0m"
 cat << EOF | chroot $TARGET_ROOTFS_DIR
 
