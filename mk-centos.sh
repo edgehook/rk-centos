@@ -71,6 +71,9 @@ yum groupinstall -y "X Window System"
 #yum groupinstall -y "GNOME Desktop"
 yum install -y gnome-classic-session gnome-terminal nautilus-open-terminal control-center liberation-mono-fonts
 
+#remove smart card manager system tool
+yum remove -y esc
+
 #remove dev-log
 rm -rf /run/systemd/journal/dev-log
 
