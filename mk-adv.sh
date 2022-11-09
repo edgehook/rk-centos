@@ -45,6 +45,9 @@ chmod 0777 /userdata
 chmod 0777 /oem
 ln -s /dev/disk/by-partlabel/misc /misc
 
+#fixup serial login error
+ln -s /dev/null /etc/systemd/system/plymouth-start.service
+
 EOF
 
 sudo umount $TARGET_ROOTFS_DIR/proc
